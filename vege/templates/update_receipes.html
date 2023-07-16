@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            font-size:large;
+    }
+        h2{
+            color: green;
+            {% comment %} padding:2px 250px; {% endcomment %}
+            text-decoration:underline;
+            font-size:50px
+            
+
+        }
+        div:hover{
+            {% comment %} color: red; {% endcomment %}
+        }
+        .container{
+            {% comment %} border:2px solid blue; {% endcomment %}
+            width:1500px;
+            padding:2px 500px;
+        }
+        #btn{
+            padding:5px 300px;
+            background-color:black;
+            width:90px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+    <body>
+        <div class="container mt-5"> 
+        <h2>Update Receipe</h2>
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-dat">
+            {% csrf_token %}
+            <div>
+               Receipe Name: <input name="receipe_name" type="text">
+            </div>
+            <br>           
+            <div>
+                Receipe description: <br><textarea cols="90" rows="10" name="receipe_desc"></textarea>
+            </div>
+            <br>
+            <div>
+                Receipe image: <input name="receipe_image" type="file">
+            </div>
+            <br>
+           <div id="btn">
+                <input type="submit" value="Update Receipe">
+                
+            </div>
+        </form>

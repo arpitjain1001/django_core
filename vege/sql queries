@@ -1,0 +1,25 @@
+ 
+# QUERIES 
+
+# from vege.models import *
+# queryset = Student.objects.filter(student_name_startswith ='a')
+# queryset = Student.objects.filter(student_name_endswith ='a')
+# queryset = Student.objects.filter(student_email ='org')
+# queryset = Student.objects.filter(student_name_icontains ='An')
+# queryset = Student.objects.filter(department__department__icontains ="Civ")
+# d = ['Civil','Electrical']
+# queryset = Student.objects.filter( department__in= d)
+# queryset = Student.objects.exclude(department__department__icontains ="Civ") 
+
+# from django.db.models import *
+# from vege.models import *
+# Students.objects.aggregate(Avg('student_age'))
+# Students.objects.aggregate(Max('student_age'))
+# Students.objects.aggregate(Min('student_age'))
+# Students.objects.aggregate(Sum('student_age'))
+# student = Student.objects.values('student_age').annotate(Count('student_age'))
+# student = Student.objects.values('student_name').annotate(Count('student_age'))
+# student = Student.objects.values('department',student_age).annotate(Count('department'),(Count('student_age')))
+
+# python manage.py shell
+# from vege.seed import *

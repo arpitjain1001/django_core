@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <style>
+        body{
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            font-size:large;
+      
+    }
+        h2{
+            color: green;
+            text-decoration:underline;
+            font-size:50px
+     }
+        
+        .container{
+            width:1500px;
+            padding:2px 500px;
+        }
+        #btn{
+            padding:5px 300px;
+            background-color:black;
+            width:90px;
+            font-weight:bold;
+        }
+        .navbar{
+            margin:4px 34px;
+        }
+        th{
+            border:2px solid black;
+            background-color:white;
+            {% comment %} font-weight:bold; {% endcomment %}
+            font-size:large;
+            color:black;
+          }
+          td{
+            border:2px solid black;
+            background-color:red;
+          }
+    </style>
+</head>
+    <body>
+   <div>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand"></a>
+              <form class="d-flex" role="search">
+                {% if request.user.is_authenticated %}
+                <a href ="/vege/logout/" class="btn btn-outline-success" type="submit">Logout</a>
+                {% else %}
+                <a href ="/login/" class="btn btn-outline-success" type="submit">Login</a>
+                {% endif %}
+              </form>
+            </div>
+          </nav>
+        </div>
+        <div class="container mt-5"> 
+        <h2>Add Receipe</h2>
+        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-dat">
+            {% csrf_token %}
+            <div>
+               Receipe Name: <input name="receipe_name" type="text">
+            </div>
+            <br>           
+            <div>
+                Receipe description: <br><textarea cols="90" rows="10" name="receipe_desc"></textarea>
+            </div>
+            <br>
+            {% comment %} <div>
+                Receipe image: <input name="receipe_image" type="file">
+            </div> {% endcomment %}
+            <br>
+           <div id="btn">
+                <input type="submit" value="Add Receipe">
+                
+            </div>
+        </form>
+        <br>
+        <table>
+
+            <thead>
+                <tr>
+                    <th scope="col"> S.no</th>
+                    <th scope="col"> receipe_name</th>
+                    <th scope="col">receipe_desc</th>
+                    {% comment %} <th scope="col">receipe_image</th> {% endcomment %}
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for receipe in receipes %}
+            </tr> 
+                 <th scope="row">{{forloop.counter}}</th>    <!-- yeh S.NO ke liye hota h -->
+                <td>{{receipe.receipe_name}}</td>
+                <td>{{receipe.receipe_desc}}</td>
+                <!-- <td>{{receipe.receipe_image}}</td> -->
+             <td>
+                <a href ="/vege/delete_receipe/{{receipe.id}}/" class="btn btn-danger m-2">Delete</a>
+                <a href ="/vege/update_receipe/{{receipe.id}}/" class="btn btn-success">Update</a>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </body>
+    
+    </html>
+
