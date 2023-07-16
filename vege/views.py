@@ -110,7 +110,7 @@ def logout_page(request):
    
 
 def register(request):
-    print("\n\n\n\n\n\n\n\n","chal if ke upar ahi","\n\n\n\n\n\n\n\n\n")
+    # print("\n\n\n\n\n\n\n\n","chal if ke upar ahi","\n\n\n\n\n\n\n\n\n")
 
     print(request.method)
 
